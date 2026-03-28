@@ -20,13 +20,11 @@ const gallerySchema=new mongoose.Schema({
     },
     occassion:{
         type:String,
-        default:false
+        default:""
     },
-    timestamps:true
-
 })
 
-const galleryModel=mongoose.model(gallerySchema,"gallery")
+const galleryModel=mongoose.model("gallery",gallerySchema)
 
 
 module.exports=galleryModel

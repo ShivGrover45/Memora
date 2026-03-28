@@ -4,10 +4,10 @@ const albumSchema = new mongoose.Schema({
   name:       { type: String, required: true },
   coverPhoto: { type: Schema.Types.ObjectId, ref: "gallery", default: null },
   photos:     [{ type: Schema.Types.ObjectId, ref: "gallery" }]
-}, { timestamps: true })
+})
 
 
-const albumModel=new mongoose.model(albumSchema,"album")
+const albumModel=new mongoose.model("album",albumSchema)
 
 
 module.exports=albumModel

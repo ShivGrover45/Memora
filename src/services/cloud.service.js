@@ -6,8 +6,7 @@ cloudinary.config({
     api_secret:process.env.CLOUDINARY_SECRET
 })
 
-console.log(process.env.CLOUDINARY_SECRET)
-console.log(process.env.CLOUDINAY_API_KEY)
+
 
 const uploadImages=async(file)=>{
     try{
