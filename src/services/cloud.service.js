@@ -1,28 +1,14 @@
-const cloudinary=require('cloudinary').v2
-const fs=require('fs')
-cloudinary.config({
-    cloud_name:process.env.CLOUDINARY_NAME,
-    api_key:process.env.CLOUDINARY_API_KEY,
-    api_secret:process.env.CLOUDINARY_SECRET
+const imagekit=require('@imagekit/nodejs')
+
+const client=new imagekit({
+    privatekey:process.env.IMAGEKIT_PRIVATE_KEY 
 })
-
-
-
-const uploadImages=async(file)=>{
-    try{
-        if(!file){
-            return null
-        }
-        const base64 = `data:${file.mimetype};base64,${file.buffer.toString("base64")}`;
-        const resp=await cloudinary.uploader.upload(base64,{
-            resource_type:'auto'
-        })
-        console.log("file has been uploaded")
-        console.log(resp)
-        return resp
-    }catch(err){
-        console.log(err.message)
-    }
+async function upload(buffer){
+    const result=await client.files.upload({
+        file:buffer.toString('base64'),
+        fileName:"Shikha.jpg"
+    })
+    return result;
 }
 
-module.exports=uploadImages
+module.exports=upload

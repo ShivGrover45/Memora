@@ -11,7 +11,7 @@ const upload=multer({
 
 imageRouter.post('/upload',upload.single("image"),async(req,res)=>{
     console.log(req.file.buffer)
-    const upload=await uploadImages(req.file)
+    const upload=await uploadImages(req.file.buffer)
     const gallery=await galleryModel.create({
         image:upload.url
     })
