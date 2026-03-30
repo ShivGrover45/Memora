@@ -1,6 +1,7 @@
 const express=require('express')
 const imageRouter = require('./features/images/images.router')
 const multer=require('multer')
+const authRouter = require('./features/auth/auth.router')
 const app=express()
 
 const upload=multer({
@@ -10,5 +11,7 @@ const upload=multer({
     }
 })
 
+
+app.use('/auth',authRouter)
 app.use('/api',upload.single("image"),imageRouter)
 module.exports=app
