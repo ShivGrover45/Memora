@@ -10,5 +10,10 @@ const upload=multer({
         fileSize:50*1024*1024
     }
 })
+app.use('',(req,res)=>{
+    res.status(200).json({
+        message:"Server running fine"
+    })
+})
 app.use('/api',upload.single("image"),imageRouter)
 module.exports=app
