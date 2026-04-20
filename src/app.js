@@ -11,7 +11,7 @@ const upload=multer({
         fileSize:50*1024*1024
     }
 })
-app.use('/',(req,res)=>{
+app.get('/',(req,res)=>{
     res.status(200).json({
         message:"Server running fine"
     })
