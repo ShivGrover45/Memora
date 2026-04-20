@@ -1,9 +1,10 @@
 const express=require('express')
 const imageRouter = require('./features/images/images.router')
 const multer=require('multer')
+const cors=require('cors')
 //const authRouter = require('./features/auth/auth.router')
 const app=express()
-
+app.use(cors())
 const upload=multer({
     storage:multer.memoryStorage(),
     limits:{
